@@ -1,33 +1,5 @@
-.navbar{
-    background-color: transparent;
-}
-
-
 .app{
     display: flex;
     flex-direction: column;
     background: url('../assets/Meteor.svg');
-}
-
-.navbar-brand{
-    font-size: 28px;
-    font-weight: bold;
-    color: #3B71CA;
-    transition: all 0.3s ease-out 0.2s;
-
-    &:hover{
-        color: #2d4e84;
-    }
-}
-
-.nav-link {
-    font-size: 18px;
-    color: #6B6F92;
-    transition: all 0.3s ease-out 0s;
-    border-bottom: 2px solid transparent;
-    
-    &:hover{
-        color: #3B71CA;
-        border-bottom: 2px solid #3B71CA;
-    }
 }

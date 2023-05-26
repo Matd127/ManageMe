@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   onSwitchToRegister(e: any) {
     e.preventDefault();
     this.auth = !this.auth;
-    console.log(this.auth)
   }
   
   ngOnInit(): void {}

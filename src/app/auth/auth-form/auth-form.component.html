@@ -9,7 +9,7 @@ data-sidebar-position="fixed" data-header-position="fixed">
           <div class="card-body">
             <h1 class="text-center logo">ManageMe</h1>
             <p class="text-center subtitle">Manage Your Projects</p>
-            <app-login [auth] = "isAuth"></app-login>
+            <app-login [auth] = "isAuth" *ngIf="isAuth"></app-login>
           </div>
         </div>
       </div>

@@ -1,0 +1,58 @@
+form {
+  .text-primary {
+    color: #3b71ca !important;
+  }
+
+  label {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: 500 !important;
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background-color: #3b71ca !important;
+    border-color: #3b71ca;
+    font-size: 1.2rem !important;
+  }
+}
+
+.form-check-input {
+  border: 1px solid #dfe5ef;
+  box-shadow: inset 0 1px 2px rgba(90, 106, 133, 0.075);
+
+  &:checked {
+    background-color: #3b71ca !important;
+  }
+
+  &:focus {
+    border: 1px solid #5684c9ab;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+.form-check-label {
+  color: rgb(42, 53, 71);
+  font-weight: 400 !important;
+}
+
+.form-control {
+  color: #5a6a85;
+  border: 1px solid #dfe5ef;
+  box-shadow: inset 0 1px 2px rgba(90, 106, 133, 0.075);
+
+  &:focus {
+    transition: border-color 0.3s ease-in-out;
+    border-color: #94bdff;
+  }
+}
+
+.question {
+    font-weight: 500;
+    color: #5a6a85;
+}

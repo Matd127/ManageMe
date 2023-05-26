@@ -8,6 +8,10 @@ import { ProjectsComponent } from './projects/projects.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationComponent } from './home/navigation/navigation.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthFormComponent } from './auth/auth-form/auth-form.component';
+import { LoginComponent } from './auth/auth-form/login/login.component';
+import { RegisterComponent } from './auth/auth-form/register/register.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
     HomeComponent,
     ProjectsComponent,
     NavigationComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AuthComponent,
+    AuthFormComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

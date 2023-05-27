@@ -1,1 +1,89 @@
-<p>projects works!</p>
+<div
+  class="page-wrapper"
+  id="main-wrapper"
+  data-layout="vertical"
+  data-navbarbg="skin6"
+  data-sidebartype="full"
+  data-sidebar-position="fixed"
+  data-header-position="fixed"
+>
+  <aside class="left-sidebar">
+    <div>
+      <div class="d-flex justify-content-center align-items-center">
+        <h1>ManageMe</h1>
+        <!-- <div class="d-flex justify-content-center align-items-center w-100">
+          <mat-icon style="font-size: 30px; font-weight: bold;">close</mat-icon>
+        </div> -->
+      </div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <ul id="sidebarnav">
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Home</span>
+          </li>
+          <li class="sidebar-item">
+            <div class="sidebar-link d-flex align-items-center">
+              <mat-icon>folder_open</mat-icon>
+              <span class="px-2">Dashboard</span>
+            </div>
+          </li>
+          <li class="nav-small-cap mt-3">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">UI COMPONENTS</span>
+          </li>
+          <li class="sidebar-item">
+            <div class="sidebar-link d-flex align-items-center">
+              <mat-icon class>folder icon</mat-icon>
+              <span class="px-2">Dashboard</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <div class="body-wrapper">
+    <header class="app-header">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+        123  
+        </div>
+      </nav>  
+    </header>
+
+    <div class="container-fluid mt-2">
+      <div class="card container">
+        <div class="card-body">
+          <h5 class="card-title fs-5 fw-semibold mb-4">Your projects</h5>
+          <div class="row">
+            <div class="col-md-6 col-xl-4" *ngFor="let item of dummyProjects">
+              <div class="card p-4">
+                <div>
+                  <div class="card-square mb-3 d-flex justify-content-center align-items-center">{{item.title.slice(0, 1)}}</div>
+                  <div class="card-title project-title">{{ item.title }}</div>
+                  <div class="p-0 card-body project mt-2">
+                    {{ item.description }}
+                  </div>
+                  <div class="d-flex gap-1">
+                    <button class="btn btn-primary fs-6 mt-2 d-flex align-items-center">
+                      <mat-icon>work</mat-icon>
+                      <span class="mx-2">Work</span>
+                    </button>
+
+                    <button class="btn btn-warning text-white fs-6 mt-2 d-flex align-items-center">
+                      <mat-icon>edit</mat-icon>
+                      <span class="mx-2">Edit</span>
+                    </button>
+                    <button class="btn btn-danger text-white fs-6 mt-2 d-flex align-items-center" (click)="removeProject(item.id)">
+                      <mat-icon>delete</mat-icon>
+                      <span class="mx-2">Delete</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,8 +7,11 @@ import { Component } from '@angular/core';
 })
 
 export class AuthFormComponent {
-  public isAuth = true; 
+  public isAuth: boolean = true; 
+
+  switchLoginAndRegister() {
+    this.isAuth = !this.isAuth;
+  }
 
   public ngOnInit(): void { }
-
 }

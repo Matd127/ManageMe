@@ -8,13 +8,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 export class LoginComponent implements OnInit {
 
-  @Input() auth = true;
-  @Output() switchToRegister = new EventEmitter()
+  @Input() auth:boolean;
+
+  @Output() authEvent = new EventEmitter<boolean>();
   
-  onSwitchToRegister(e: any) {
-    e.preventDefault();
-    this.auth = !this.auth;
-  }
-  
+  constructor() {}
+
   ngOnInit(): void {}
+
+  setAuth() {
+    this.authEvent.emit(this.auth);
+  }
 }

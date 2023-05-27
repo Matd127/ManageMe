@@ -1,9 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 
-body{
-    margin: 0 auto;
-    box-sizing: border-box;
+body {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+//   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }

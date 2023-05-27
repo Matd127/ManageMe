@@ -9,7 +9,12 @@ data-sidebar-position="fixed" data-header-position="fixed">
           <div class="card-body">
             <h1 class="text-center logo">ManageMe</h1>
             <p class="text-center subtitle">Manage Your Projects</p>
-            <app-login [auth] = "isAuth" *ngIf="isAuth"></app-login>
+            <ng-container *ngIf="isAuth">
+              <app-login [auth]="isAuth" (authEvent)="switchLoginAndRegister()" ></app-login>
+            </ng-container>
+            <ng-container *ngIf="!isAuth">
+              <app-register [auth]="isAuth" (authEvent)="switchLoginAndRegister()" ></app-register>
+            </ng-container>
           </div>
         </div>
       </div>

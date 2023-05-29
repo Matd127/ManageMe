@@ -14,6 +14,8 @@ import { RegisterComponent } from './auth/auth-form/register/register.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon'
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { SidebarComponent } from './projects/sidebar/sidebar.component';
+import { ProjectsNavbarComponent } from './projects/projects-navbar/projects-navbar.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     AuthComponent,
     AuthFormComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    ProjectsNavbarComponent
   ],
   imports: [
     BrowserModule,

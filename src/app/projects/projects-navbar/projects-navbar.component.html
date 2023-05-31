@@ -1,7 +1,23 @@
 <header class="app-header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-      123  
+  <nav class="navbar navbar-light bg-transparent">
+    <div class="container">
+      <mat-icon class="sidebar-toggler" (click)="setToggleSidebar()"
+        >menu</mat-icon
+      >
+      <div
+        mat-button
+        [matMenuTriggerFor]="menu"
+        class="profile-logo d-flex justify-content-center align-items-center"
+      >
+        J
       </div>
-    </nav>  
-  </header>
+    </div>
+  </nav>
+</header>
+
+<mat-menu #menu="matMenu" class="mt-2">
+  <button mat-menu-item>
+    <mat-icon>account_circle</mat-icon> Account settings
+  </button>
+  <button mat-menu-item><mat-icon>exit_to_app</mat-icon>Logout</button>
+</mat-menu>

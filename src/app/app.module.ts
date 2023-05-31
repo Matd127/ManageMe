@@ -12,11 +12,11 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { LoginComponent } from './auth/auth-form/login/login.component';
 import { RegisterComponent } from './auth/auth-form/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon'
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from './projects/sidebar/sidebar.component';
 import { ProjectsNavbarComponent } from './projects/projects-navbar/projects-navbar.component';
-
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { ProjectsNavbarComponent } from './projects/projects-navbar/projects-nav
     LoginComponent,
     RegisterComponent,
     SidebarComponent,
-    ProjectsNavbarComponent
+    ProjectsNavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +38,10 @@ import { ProjectsNavbarComponent } from './projects/projects-navbar/projects-nav
     NgbModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatMenuModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

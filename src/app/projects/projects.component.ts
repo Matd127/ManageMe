@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HostListener } from '@angular/core';
+import { dummyProjects } from './dummyProjects';
 
 @Component({
   selector: 'app-projects',
@@ -6,26 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent {
-  protected dummyProjects = [
-    {
-      id: 1,
-      title: 'Some project',
-      description: 'Some description about this project. Click to see more!'
-    },
-    {
-      id: 2,
-      title: 'Second project',
-      description: 'Some description about second project. Click to see more!'
-    },
-    {
-      id: 3,
-      title: 'Third project',
-      description: 'Some description about third project. Click to see more!'
-    },
-  ];
+  public width = window.innerWidth;
+  public showSidebar = window.innerWidth > 992 ? true : false;
+  public dummyProjectsList = dummyProjects
+ 
+  ngOnInit(): void {
+    this.width = window.innerWidth
+  }
+
+  @HostListener('window:resize', ['$event'])
+    onWindowResize(){
+      this.width = window.innerWidth
+    }
+
+  setShowSidebar() {
+    this.showSidebar = !this.showSidebar;
+  }
 
   removeProject(id : number) {
-    this.dummyProjects = this.dummyProjects.filter(projects => projects.id !== id)
-    console.log(this.dummyProjects.length)
+    this.dummyProjectsList = this.dummyProjectsList.filter(projects => projects.id !== id)
+    console.log(this.dummyProjectsList.length)
   }
 }

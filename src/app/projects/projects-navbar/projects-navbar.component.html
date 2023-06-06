@@ -16,8 +16,9 @@
 </header>
 
 <mat-menu #menu="matMenu" class="mt-2">
+  <div class="d-flex justify-content-center">Welcome,&nbsp;<span class="fw-bold">Jon Doe!</span></div>
   <button mat-menu-item>
     <mat-icon>account_circle</mat-icon> Account settings
   </button>
-  <button mat-menu-item><mat-icon>exit_to_app</mat-icon>Logout</button>
+  <button mat-menu-item routerLink='/auth'><mat-icon>exit_to_app</mat-icon>Logout</button>
 </mat-menu>

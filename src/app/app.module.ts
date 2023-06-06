@@ -17,6 +17,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from './projects/sidebar/sidebar.component';
 import { ProjectsNavbarComponent } from './projects/projects-navbar/projects-navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { DashboardComponent } from './projects/dashboard/dashboard.component';
+import { ProjectListComponent } from './projects/project-list/project-list.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import { MatMenuModule } from '@angular/material/menu';
     RegisterComponent,
     SidebarComponent,
     ProjectsNavbarComponent,
+    DashboardComponent,
+    ProjectListComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ import { MatMenuModule } from '@angular/material/menu';
     BrowserAnimationsModule,
     MatIconModule,
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent],

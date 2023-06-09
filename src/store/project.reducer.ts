@@ -1,7 +1,8 @@
 import { Action } from "@ngrx/store";
-import { ActionTypes, Add, Edit, Delete } from "./project.action";
+import Project from "src/app/models/Project";
+import { ActionTypes, Add, Edit, Delete, Read } from "./project.action";
 
-export const initialState = [{
+export const initialState : Project[] = [{
     id: 1,
     name: 'Some name',
     description: 'Some description'
@@ -9,6 +10,9 @@ export const initialState = [{
 
 export function projectReducer(state = initialState, action : Action){
     switch(action.type) {
+        case ActionTypes.Read:
+            return state;
+
         case ActionTypes.Add:
             const addAction = action as Add;
             return [...state, addAction.payload];

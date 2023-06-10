@@ -10,30 +10,6 @@
   <app-sidebar *ngIf="showSidebar"/>
   <div class="body-wrapper">
     <app-projects-navbar [toggleSidebar] = "showSidebar" (toggleEvent)="setShowSidebar()"/>
-
-    <div class="container-fluid mt-2">
-      <div class="card container">
-        <div class="card-body">
-          <h5 class="card-title fs-5 fw-semibold mb-4">Your projects</h5>
-          <div class="row">
-            <div class="col-md-6 col-xl-4" *ngFor="let item of dummyProjectsList">
-              <div class="card p-4">
-                <div>
-                  <div class="card-square mb-3 d-flex justify-content-center align-items-center">{{item.title.slice(0, 1)}}</div>
-                  <div class="card-title project-title">{{ item.title }}</div>
-                  <div class="p-0 card-body project mt-2">
-                    {{ item.description }}
-                  </div>
-                    <button class="btn btn-primary fs-6 mt-2 d-flex align-items-center">
-                      <mat-icon>work</mat-icon>
-                      <span class="mx-2">Work</span>
-                    </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

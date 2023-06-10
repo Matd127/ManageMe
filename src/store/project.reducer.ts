@@ -1,31 +1,40 @@
-import { Action } from "@ngrx/store";
-import Project from "src/app/models/Project";
-import { ActionTypes, Add, Edit, Delete, Read } from "./project.action";
+import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
 
-export const initialState : Project[] = [{
+@NgModule({
+  imports: [StoreModule.forFeature('project', projectReducer)],
+})
+export class ProjectModule {}
+
+import { Action } from '@ngrx/store';
+import { ActionTypes, Add, Edit, Delete } from './project.action';
+
+export const initialState = [
+  {
     id: 1,
     name: 'Some name',
-    description: 'Some description'
-}]
+    description: 'Some description',
+  },
+];
 
-export function projectReducer(state = initialState, action : Action){
-    switch(action.type) {
-        case ActionTypes.Read:
-            return state;
+export function projectReducer(state = initialState, action: Action) {
+  switch (action.type) {
+    case ActionTypes.Add:
+      const addAction = action as Add;
+      return [...state, addAction.payload];
 
-        case ActionTypes.Add:
-            const addAction = action as Add;
-            return [...state, addAction.payload];
+    case ActionTypes.Edit:
+      const editAction = action as Edit;
+      return state;
 
-        case ActionTypes.Edit:
-            const editAction = action as Edit;
-           
-            return state;
-        case ActionTypes.Delete:
-            const deleteAction = action as Delete;
+    case ActionTypes.Delete:
+      const deleteAction = action as Delete;
+      return state;
 
-            return state;
-        default: 
-            return state;
-    }
+    case ActionTypes.Read:
+      return state;
+
+    default:
+      return state;
+  }
 }

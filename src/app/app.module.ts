@@ -20,6 +20,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DashboardComponent } from './projects/dashboard/dashboard.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { StoreModule } from '@ngrx/store';
+import { ProjectModule } from 'src/store/project.reducer';
+import { ProjectComponent } from './projects/project/project.component';
+import { FormsModule } from '@angular/forms';
+import { AddProjectModalComponent } from './projects/add-project-modal/add-project-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import { StoreModule } from '@ngrx/store';
     ProjectsNavbarComponent,
     DashboardComponent,
     ProjectListComponent,
+    ProjectComponent,
+    AddProjectModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,9 @@ import { StoreModule } from '@ngrx/store';
     MatIconModule,
     MatSidenavModule,
     MatMenuModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}),
+    ProjectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,6 @@
 import User from "./User";
 
-export default interface Functionallity {
+export default interface Functionality {
     id: number,
     description: string,
     priority: string,

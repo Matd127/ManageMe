@@ -6,5 +6,5 @@ export default interface User {
     surname: string,
     question: string,
     answer: string
-    permission: string
+    role: 'admin' | 'devops' | 'developer';
 }

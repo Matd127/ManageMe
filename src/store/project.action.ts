@@ -10,11 +10,11 @@ export enum ActionTypes {
 export class Add implements Action {
     readonly type = ActionTypes.Add;
      
-    constructor(public payload: {id: number, name: string, desription: string}) {}
+    constructor(public payload: {id: number, name: string, description: string}) {}
 }
 
 export class Edit implements Action {
-    readonly type = ActionTypes.Edit;
+    readonly type = ActionTypes.Edit
 
     constructor(public payload: {id: number}) {}
 }
@@ -26,6 +26,5 @@ export class Delete implements Action {
 }
 
 export class Read implements Action {
-    readonly type = ActionTypes.Read;
+    readonly type = ActionTypes.Read
 }
-

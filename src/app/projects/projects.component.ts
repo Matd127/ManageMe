@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HostListener } from '@angular/core';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -9,15 +8,16 @@ import { HostListener } from '@angular/core';
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent {
-  
-
   public width = window.innerWidth;
   public showSidebar = window.innerWidth > 992 ? true : false;
 
   ngOnInit(): void {
     this.width = window.innerWidth;
+    const checkIfLogged = localStorage.getItem('user');
 
-   
+    if (!checkIfLogged) {
+      this.router.navigate(['auth']);
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -29,5 +29,5 @@ export class ProjectsComponent {
     this.showSidebar = !this.showSidebar;
   }
 
-
+  constructor(private router: Router) {}
 }

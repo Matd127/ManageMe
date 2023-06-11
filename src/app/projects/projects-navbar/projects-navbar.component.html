@@ -9,16 +9,16 @@
         [matMenuTriggerFor]="menu"
         class="profile-logo d-flex justify-content-center align-items-center"
       >
-        J
+        {{loggedUser[0].name.slice(0, 1)}}
       </div>
     </div>
   </nav>
 </header>
 
 <mat-menu #menu="matMenu" class="mt-2">
-  <div class="d-flex justify-content-center">Welcome,&nbsp;<span class="fw-bold">Jon Doe!</span></div>
+  <div class="d-flex justify-content-center">Welcome,&nbsp;<span class="fw-bold">{{loggedUser[0].name}} {{loggedUser[0].surname}}</span></div>
   <button mat-menu-item>
     <mat-icon>account_circle</mat-icon> Account settings
   </button>
-  <button mat-menu-item routerLink='/auth'><mat-icon>exit_to_app</mat-icon>Logout</button>
+  <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>Logout</button>
 </mat-menu>

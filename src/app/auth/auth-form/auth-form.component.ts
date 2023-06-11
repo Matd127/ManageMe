@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-form',
@@ -13,5 +14,13 @@ export class AuthFormComponent {
     this.isAuth = !this.isAuth;
   }
 
-  public ngOnInit(): void { }
+  constructor( private router: Router) {}
+
+  public ngOnInit(): void {
+    const checkIfLogged = localStorage.getItem('user');
+
+    if(checkIfLogged) {
+      this.router.navigate(['/projects']);
+    }
+  }
 }

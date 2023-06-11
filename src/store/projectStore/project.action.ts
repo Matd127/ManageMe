@@ -1,10 +1,10 @@
 import { Action } from "@ngrx/store";
 
 export enum ActionTypes {
-    Add  = '[Project Component] Add',
-    Edit = '[Project Component] Edit',
-    Delete = '[Project Component] Delete',
-    Read = '[Project Component] Read'
+    Add  = 'Add',
+    Edit = 'Edit',
+    Delete = 'Delete',
+    Read = 'Read'
 }
 
 export class Add implements Action {
@@ -16,7 +16,7 @@ export class Add implements Action {
 export class Edit implements Action {
     readonly type = ActionTypes.Edit
 
-    constructor(public payload: {id: number}) {}
+    constructor(public payload: {id: number, name?: string, description?: string}) {}
 }
 
 export class Delete implements Action {

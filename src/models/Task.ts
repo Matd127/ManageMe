@@ -3,13 +3,14 @@ import User from './User';
 
 export interface Task {
   id: number;
+  name: string,
   description: string;
-  priority: string;
-  functionallity: Functionallity;
-  predictedTime: number; // or date?
-  state: string;
+  priority: 'Low' | 'Normal' | 'High',
+  functionality: Functionallity;
+  predictedTime: Date; // or no of hours?
+  state: 'Todo' | 'Doing' | 'Done'
   createDate: Date;
   startDate?: Date;
   finishDate?: Date;
-  responsibleUser: User[];
+  responsibleUser: User[] // or User;
 }

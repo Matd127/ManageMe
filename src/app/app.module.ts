@@ -20,10 +20,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DashboardComponent } from './projects/dashboard/dashboard.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { StoreModule } from '@ngrx/store';
-import { ProjectModule } from 'src/store/project.reducer';
+import { ProjectModule } from 'src/store/projectStore/project.module';
+import { UserModule } from 'src/store/userStore/user.module';
+import { TaskModule } from 'src/store/taskStore/task.module';
+import { FunctionalityModule } from 'src/store/functionalityStore/functonality.module';
 import { ProjectComponent } from './projects/project/project.component';
 import { FormsModule } from '@angular/forms';
 import { AddProjectModalComponent } from './projects/add-project-modal/add-project-modal.component';
+import { AddTaskModalComponent } from './projects/project/add-task-modal/add-task-modal.component';
+import { AddFunctionalityModalComponent } from './projects/project/add-functionality-modal/add-functionality-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,8 @@ import { AddProjectModalComponent } from './projects/add-project-modal/add-proje
     ProjectListComponent,
     ProjectComponent,
     AddProjectModalComponent,
+    AddTaskModalComponent,
+    AddFunctionalityModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,9 @@ import { AddProjectModalComponent } from './projects/add-project-modal/add-proje
     MatMenuModule,
     StoreModule.forRoot({}),
     ProjectModule,
+    UserModule,
+    FunctionalityModule,
+    TaskModule,
     FormsModule
   ],
   providers: [],

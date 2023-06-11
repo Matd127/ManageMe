@@ -1,19 +1,17 @@
-import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-
-@NgModule({
-  imports: [StoreModule.forFeature('project', projectReducer)],
-})
-export class ProjectModule {}
-
 import { Action } from '@ngrx/store';
 import { ActionTypes, Add, Edit, Delete } from './project.action';
+import Project from 'src/models/Project';
 
-export const initialState = [
+export const initialState : Project[] = [
   {
     id: 1,
     name: 'Some name',
     description: 'Some description',
+  },
+  {
+    id: 2,
+    name: 'Test project',
+    description: 'Testing project',
   },
 ];
 
@@ -25,11 +23,17 @@ export function projectReducer(state = initialState, action: Action) {
 
     case ActionTypes.Edit:
       const editAction = action as Edit;
+      const foundProject = state.filter(project => project.id === editAction.payload.id)
+
+      if(foundProject.length != 1)
+        return state;
+      
+      
       return state;
 
     case ActionTypes.Delete:
       const deleteAction = action as Delete;
-      return state;
+      return state.filter(project => project.id !== deleteAction.payload.id);
 
     case ActionTypes.Read:
       return state;

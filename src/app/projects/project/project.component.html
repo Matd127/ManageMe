@@ -1,17 +1,57 @@
 <div class="container-fluid mt-2">
   <div class="card container">
     <div class="card-body">
-      <h5 class="card-title fs-5 fw-semibold mb-4">
-        Functionalities with tasks
-      </h5>
-      <div ngbAccordion>
+      <div class="d-flex justify-content-between flex-wrap">
+        <h5 class="card-title fs-5 fw-semibold mb-4">
+          <span *ngIf="project"> {{ (project | async)?.name }}: </span>
+          Functionalities with tasks
+        </h5>
+        <div class="card-actions">
+          <button class="btn btn-primary mx-md-1">Add functionality</button>
+          <button class="btn btn-primary">Add task</button>
+        </div>
+      </div>
+      <div ngbAccordion *ngFor="let functionality of functionalities | async">
         <div ngbAccordionItem>
           <h2 ngbAccordionHeader>
-            <button ngbAccordionButton>First</button>
+            <button ngbAccordionButton>{{ functionality.name }}</button>
           </h2>
           <div ngbAccordionCollapse>
             <div ngbAccordionBody>
-              <ng-template>Content for the first item</ng-template>
+              <ng-template>
+                <div class="mb-1">
+                  <button class="btn btn-warning text-white">
+                    Edit functionality
+                  </button>
+                  <button class="btn btn-danger text-white mx-1">
+                    Delete functionality
+                  </button>
+                </div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Task name</th>
+                      <th scope="col">Priority</th>
+                      <th scope="col">State</th>
+                      <th scope="col">Started:</th>
+                      <th scope="col">Actions:</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let task of getTaskById(functionality.id) | async">
+                      <td>{{ task.name }}</td>
+                      <td>{{ task.priority }}</td>
+                      <td>{{ task.state }}</td>
+                      <td>{{ task.startDate?.toLocaleString() ?? "-" }}</td>
+                      <td>
+                        <button class="btn btn-warning text-white">
+                          Manage
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ng-template>
             </div>
           </div>
         </div>

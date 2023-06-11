@@ -45,9 +45,19 @@
           background-color: #d4e5ff;
         }
 
+        &:active {
+          color: #3b71ca !important;
+          background-color: #d4e5ff;
+        }
+
         &:focus {
           background-color: #3b71ca !important;
         }
+      }
+
+      .sidebar-item.active {
+        color: #3b71ca !important;
+        background-color: #d4e5ff;
       }
     }
 
@@ -55,4 +65,10 @@
       position: fixed;
     }
   }
+}
+
+.sidebar-item.active {
+  color: #3b71ca !important;
+  border-radius: 8px;
+  background-color: #d4e5ff;
 }

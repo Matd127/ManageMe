@@ -5,9 +5,10 @@ import { Observable } from 'rxjs/internal/Observable';
 import Project from 'src/models/Project';
 import { Read } from 'src/store/projectStore/project.action';
 import { map } from 'rxjs/operators';
-import { FunctionalityRead } from 'src/store/functionalityStore/functionality.action';
-import { TaskRead } from 'src/store/taskStore/task.action';
+import { FunctionalityDelete, FunctionalityRead} from 'src/store/functionalityStore/functionality.action';
+import { TaskDelete, TaskRead } from 'src/store/taskStore/task.action';
 import Functionality from 'src/models/Functionality';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project',
@@ -21,7 +22,7 @@ export class ProjectComponent {
   functionalities: Observable<any>;
   tasks: Observable<any>;
 
-  constructor(private route: ActivatedRoute, private store: Store<any>) {}
+  constructor(private route: ActivatedRoute, private store: Store<any>, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -52,13 +53,19 @@ export class ProjectComponent {
     this.store.dispatch(new TaskRead());
     this.tasks = this.store.select('task');
 
-    // this.store.dispatch(new TaskRead());
-
     this.tasks.subscribe((taskList) => {
       console.log(taskList[0].functionality.id);
       console.log(+(this.id ?? -1));
     });
   }
+
+  addFunctionality() {}
+
+  deleteFunctionaLity(id: number) {
+    this.store.dispatch(new FunctionalityDelete({ id }));
+  }
+
+  addTask() {}
 
   getTaskById(id: number) {
     return (this.tasks = this.store
@@ -68,5 +75,13 @@ export class ProjectComponent {
           tasks.filter((task: any) => task.functionality.id === id)
         )
       ));
+  }
+
+  deleteTask(id: number) {
+    this.store.dispatch(new TaskDelete({ id }));
+  }
+
+  open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title'})
   }
 }

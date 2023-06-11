@@ -7,7 +7,7 @@
           Functionalities with tasks
         </h5>
         <div class="card-actions">
-          <button class="btn btn-primary mx-md-1">Add functionality</button>
+          <button class="btn btn-primary mx-md-1" (click)="open(content)">Add functionality</button>
           <button class="btn btn-primary">Add task</button>
         </div>
       </div>
@@ -23,7 +23,7 @@
                   <button class="btn btn-warning text-white">
                     Edit functionality
                   </button>
-                  <button class="btn btn-danger text-white mx-1">
+                  <button class="btn btn-danger text-white mx-1" (click)="deleteFunctionaLity(functionality.id)">
                     Delete functionality
                   </button>
                 </div>
@@ -47,6 +47,9 @@
                         <button class="btn btn-warning text-white">
                           Manage
                         </button>
+                        <button class="mx-1 btn btn-danger text-white" (click)="deleteTask(task.id)">
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -59,3 +62,8 @@
     </div>
   </div>
 </div>
+
+
+<ng-template #content let-modal>
+  <app-add-functionality-modal></app-add-functionality-modal>
+</ng-template>

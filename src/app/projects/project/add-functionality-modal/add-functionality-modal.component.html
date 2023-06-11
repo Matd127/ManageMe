@@ -21,7 +21,7 @@
         />
       </div>
 
-      <label for="description" class="mt-3">Functionality description</label>
+      <label for="description" class="mt-2">Functionality description</label>
       <div class="input-group">
         <textarea
           id="description"
@@ -31,6 +31,14 @@
           [(ngModel)]="description"
         ></textarea>
       </div>
+
+      <label for="description" class="mt-2">Priority</label>
+      <select id="project" class="form-select" aria-label="Default select example">
+        <option selected disabled>Open this select menu</option>
+        <option value="1">Low</option>
+        <option value="2">Normal</option>
+        <option value="3">High</option>
+      </select>
       <!-- <p class="mt-3 text-danger" *ngIf="error">{{errorMessage}}</p> -->
     </div>
   </form>

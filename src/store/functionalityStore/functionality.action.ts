@@ -1,10 +1,10 @@
 import { Action } from "@ngrx/store";
 
 export enum ActionTypes {
-    FunctionalityAdd  = 'Add',
-    FunctionalityEdit = 'Edit',
-    FunctionalityDelete = 'Delete',
-    FunctionalityRead = 'Read'
+    FunctionalityAdd = '[Functionality] Add',
+    FunctionalityEdit = '[Functionality] Edit',
+    FunctionalityDelete = '[Functionality] Delete',
+    FunctionalityRead = '[Functionality] Read',
 }
 
 export class FunctionalityAdd implements Action {
@@ -16,7 +16,7 @@ export class FunctionalityAdd implements Action {
 export class FunctionalityEdit implements Action {
     readonly type = ActionTypes.FunctionalityEdit
 
-    constructor(public payload: {id: number, name?: string, description?: string}) {}
+    constructor(public payload: {id: number, name: string, description: string}) {}
 }
 
 export class FunctionalityDelete implements Action {

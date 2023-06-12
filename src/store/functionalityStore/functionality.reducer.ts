@@ -1,78 +1,49 @@
 import { Action } from '@ngrx/store';
-import { ActionTypes, FunctionalityAdd, FunctionalityEdit, FunctionalityDelete } from './functionality.action';
+import { ActionTypes as FunctionalityActionTypes, FunctionalityAdd, FunctionalityEdit, FunctionalityDelete, FunctionalityRead } from './functionality.action';
 import Functionality from 'src/models/Functionality';
 
-export const initialState : Functionality[] = [
-  {
-    id: 1,
-    name: 'First functionality',
-    description: 'Functionality Description',
-    priority: 'Low',
-    project: {
-      id: 1,
-      name: 'Some name',
-      description: 'Some description',
-    },
-    owner: {
-      id: 2,
-      username: 'devopsuser',
-      email: 'devops@example.com',
-      password: 'devops123',
-      name: 'DevOps',
-      surname: 'User',
-      question: 'What is your favorite animal?',
-      answer: 'Dog',
-      role: 'devops',
-    },
-    state: 'Todo',
-  },
-  {
-    id: 2,
-    name: 'Second functionality',
-    description: 'Functionality Description',
-    priority: 'Low',
-    project: {
-      id: 1,
-      name: 'Some name',
-      description: 'Some description',
-    },
-    owner: {
-      id: 2,
-      username: 'devopsuser',
-      email: 'devops@example.com',
-      password: 'devops123',
-      name: 'DevOps',
-      surname: 'User',
-      question: 'What is your favorite animal?',
-      answer: 'Dog',
-      role: 'devops',
-    },
-    state: 'Todo',
-  },
-];
+const dataFromLocalStorage = localStorage.getItem('functionalities')
+const existingData = dataFromLocalStorage && JSON.parse(dataFromLocalStorage) 
+const functionalities: Functionality[] = existingData ?? []
 
-export function functionalityReducer(state = initialState, action: Action) {
+export function functionalityReducer(state = functionalities, action: Action) {
   switch (action.type) {
-    case ActionTypes.FunctionalityAdd:
+    case FunctionalityActionTypes.FunctionalityAdd:
       const addAction = action as FunctionalityAdd;
-      return [...state, addAction.payload];
+      const addedFunctionality = [...state, addAction.payload];
+      localStorage.setItem('functionalities', JSON.stringify(addedFunctionality));
+      return addedFunctionality;
 
-    case ActionTypes.FunctionalityEdit:
+    case FunctionalityActionTypes.FunctionalityEdit:
       const editAction = action as FunctionalityEdit;
-      const foundFunctionality = state.filter(
-        (functionality) => functionality.id === editAction.payload.id
-      );
-      if (foundFunctionality.length != 1) return state;
+      const foundFunctionalityIndex = state.findIndex(functionality => functionality.id === editAction.payload.id);
+      
+      if (foundFunctionalityIndex !== -1) {
+        if (editAction.payload.description.trim().length === 0 || editAction.payload.name.trim().length === 0) {
+          return state;
+        }
+
+        const foundFunctionality = state[foundFunctionalityIndex];
+        const updatedFunctionality = {
+          ...foundFunctionality,
+          name: editAction.payload.name,
+          description: editAction.payload.description
+        };
+        const newState = [...state];
+        newState[foundFunctionalityIndex] = updatedFunctionality;
+        localStorage.setItem('functionalities', JSON.stringify(newState));
+        return newState;
+      }
 
       return state;
 
-    case ActionTypes.FunctionalityDelete:
+    case FunctionalityActionTypes.FunctionalityDelete:
       const deleteAction = action as FunctionalityDelete;
-      return state.filter(
-        (functionality) => functionality.id !== deleteAction.payload.id
-      );
+      const functionalitiesAfterDelete = state.filter(functionality => functionality.id !== deleteAction.payload.id);
+      localStorage.setItem('functionalities', JSON.stringify(functionalitiesAfterDelete));
+      return functionalitiesAfterDelete;
 
-    case ActionTypes.FunctionalityRead:
+    case FunctionalityActionTypes.FunctionalityRead:
       return state;
 
     default:

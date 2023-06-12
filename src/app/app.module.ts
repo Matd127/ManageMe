@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { AddProjectModalComponent } from './projects/add-project-modal/add-project-modal.component';
 import { AddTaskModalComponent } from './projects/project/add-task-modal/add-task-modal.component';
 import { AddFunctionalityModalComponent } from './projects/project/add-functionality-modal/add-functionality-modal.component';
+import { EditProjectModalComponent } from './projects/edit-project-modal/edit-project-modal.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AddFunctionalityModalComponent } from './projects/project/add-functiona
     AddProjectModalComponent,
     AddTaskModalComponent,
     AddFunctionalityModalComponent,
+    EditProjectModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add a new project</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="name">Name of project</label>
+        <div class="input-group">
+          <input
+          id="name"
+          class="form-control"
+          placeholder="name"
+          name="name"
+          [(ngModel)]="name"
+          />
+        </div>
+
+        <label for="description" class="mt-3">Project description</label>
+         <div class="input-group">
+          <textarea
+            id="description"
+            class="form-control"
+            placeholder="description"
+            name="description"
+            [(ngModel)]="description"
+          ></textarea>
+         </div>
+
+         <p class="mt-3 text-danger" *ngIf="error">{{errorMessage}}</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="editProject()">Save</button>
+  </div>

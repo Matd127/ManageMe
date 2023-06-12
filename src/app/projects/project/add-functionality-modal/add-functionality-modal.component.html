@@ -33,16 +33,15 @@
       </div>
 
       <label for="description" class="mt-2">Priority</label>
-      <select id="project" class="form-select" aria-label="Default select example">
-        <option selected disabled>Open this select menu</option>
-        <option value="1">Low</option>
-        <option value="2">Normal</option>
-        <option value="3">High</option>
+      <select #priority (change)="onSelect(priority.value)" id="project" class="form-select" aria-label="Default select example">
+        <option selected value="Low">Low</option>
+        <option value="Normal">Normal</option>
+        <option value="High">High</option>
       </select>
       <!-- <p class="mt-3 text-danger" *ngIf="error">{{errorMessage}}</p> -->
     </div>
   </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary">Save</button>
+  <button type="button" class="btn btn-primary" (click)="addFunctionality()">Save</button>
 </div>

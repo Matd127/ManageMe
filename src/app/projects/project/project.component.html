@@ -38,11 +38,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let task of getTaskById(functionality.id) | async">
-                      <td>{{ task.name }}</td>
-                      <td>{{ task.priority }}</td>
-                      <td>{{ task.state }}</td>
-                      <td>{{ task.startDate?.toLocaleString() ?? "-" }}</td>
+                    <tr *ngFor="let task of getTaskById(functionality.id)">
+                      <td>{{ task?.name }}</td>
+                      <td>{{ task?.priority }}</td>
+                      <td>{{ task?.state }}</td>
+                      <td>{{ task?.startDate?.toLocaleString() ?? "-" }}</td>
                       <td>
                         <button class="btn btn-warning text-white">
                           Manage
@@ -52,6 +52,7 @@
                         </button>
                       </td>
                     </tr>
+                   
                   </tbody>
                 </table>
               </ng-template>

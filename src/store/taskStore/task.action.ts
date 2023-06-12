@@ -1,10 +1,10 @@
 import { Action } from "@ngrx/store";
 
 export enum ActionTypes {
-    TaskAdd  = 'Add',
-    TaskEdit = 'Edit',
-    TaskDelete = 'Delete',
-    TaskRead = 'Read'
+    TaskAdd  = '[Task] Add',
+    TaskEdit = '[Task] Edit',
+    TaskDelete = '[Task] Delete',
+    TaskRead = '[Task] Read'
 }
 
 export class TaskAdd implements Action {

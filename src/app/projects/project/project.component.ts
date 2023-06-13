@@ -88,13 +88,17 @@ export class ProjectComponent {
   }
 
   open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  }
 
+  openTask(content: any, functionality: Functionality) {
+    this.selectedFunctionality = functionality;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
   editOpen(content: any, functionality: Functionality) {
     this.selectedFunctionality = functionality;
-    console.log( this.selectedFunctionality)
+    console.log(this.selectedFunctionality);
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 }

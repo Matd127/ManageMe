@@ -10,7 +10,7 @@ import { FunctionalityAdd } from 'src/store/functionalityStore/functionality.act
   styleUrls: ['./add-functionality-modal.component.scss'],
 })
 export class AddFunctionalityModalComponent {
-
+  
   userFromLocalStorage = localStorage.getItem('user')
   projectFromLocalStorage = localStorage.getItem('currentProject')
   

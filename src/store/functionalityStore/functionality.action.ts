@@ -5,6 +5,7 @@ export enum ActionTypes {
     FunctionalityEdit = '[Functionality] Edit',
     FunctionalityDelete = '[Functionality] Delete',
     FunctionalityRead = '[Functionality] Read',
+    FunctionalityChangeState = '[Functionality] ChangeState'
 }
 
 export class FunctionalityAdd implements Action {
@@ -28,3 +29,9 @@ export class FunctionalityDelete implements Action {
 export class FunctionalityRead implements Action {
     readonly type = ActionTypes.FunctionalityRead
 }
+
+export class FunctionalityChangeState implements Action {
+    readonly type = ActionTypes.FunctionalityChangeState
+
+    constructor(public payload: {id: number, newState: 'Todo' | 'Doing' | 'Done' }) {}
+} 

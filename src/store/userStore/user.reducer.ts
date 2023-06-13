@@ -8,9 +8,12 @@ const dataFromLocalStorage = localStorage.getItem('users');
 const existingData = dataFromLocalStorage && JSON.parse(dataFromLocalStorage);
 
 let users: User[];
-if(!existingData) {
+if (!existingData) {
   users = [admin, devops, developer];
-  localStorage.setItem('users', JSON.stringify('users'))
+  console.log(users)
+  localStorage.setItem('users', JSON.stringify(users));
+} else {
+  users = existingData; 
 }
 
 export function userReducer(state = users, action: Action) {
@@ -18,6 +21,8 @@ export function userReducer(state = users, action: Action) {
     case ActionTypes.Login:
       const loginAction = action as Login;
       const data = loginAction.payload;
+
+      console.log(users)
 
       const isUserExist = state.filter(
         (user) => user.username === data.username && user.password === data.password

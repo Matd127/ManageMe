@@ -1,1 +1,61 @@
-<p>add-task-modal works!</p>
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add a new task</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="closeModal()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="name">Name of task</label>
+        <div class="input-group">
+          <input
+            id="name"
+            class="form-control"
+            placeholder="name"
+            name="name"
+            [(ngModel)]="name"
+          />
+        </div>
+  
+        <label for="description" class="mt-2">Task description</label>
+        <div class="input-group">
+          <textarea
+            id="description"
+            class="form-control"
+            placeholder="description"
+            name="description"
+            [(ngModel)]="description"
+          ></textarea>
+        </div>
+
+
+        <label for="predictedTime">Predicted time (hours)</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="predictedTime"
+            class="form-control"
+            placeholder="Predicted Time for task"
+            name="predictedTime"
+            [(ngModel)]="predictedTime"
+          />
+        </div>
+  
+        <label for="description" class="mt-2">Priority</label>
+        <select #priority (change)="onSelect(priority.value)" id="project" class="form-select" aria-label="Default select example">
+          <option selected value="Low">Low</option>
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+        </select>
+        <p class="mt-3 text-danger" *ngIf="error">{{errorMessage}}</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="addTask()">Save</button>
+  </div>
+  

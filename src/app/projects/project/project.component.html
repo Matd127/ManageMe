@@ -8,18 +8,19 @@
         </h5>
         <div class="card-actions">
           <button class="btn btn-primary mx-md-1" (click)="open(content)">Add functionality</button>
-          <button class="btn btn-primary">Add task</button>
+
         </div>
       </div>
       <div ngbAccordion *ngFor="let functionality of functionalities | async">
         <div ngbAccordionItem>
           <h2 ngbAccordionHeader>
-            <button ngbAccordionButton>{{ functionality.name }}</button>
+            <button ngbAccordionButton>{{ functionality.name }}  State:{{functionality.state}} Priority:{{functionality.priority}}</button>
           </h2>
           <div ngbAccordionCollapse>
             <div ngbAccordionBody>
               <ng-template>
                 <div class="mb-1">
+                  <button class="btn btn-primary" (click)="openTask(task, functionality)">Add task</button>
                   <button class="btn btn-warning text-white" (click)="editOpen(edit, functionality)">
                     Edit functionality
                   </button>
@@ -39,10 +40,10 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let task of getTaskById(functionality.id)">
-                      <td>{{ task.name }}</td>
-                      <td>{{ task.priority }}</td>
-                      <td>{{ task.state }}</td>
-                      <td>{{ task.startDate.toLocaleString() ?? "-" }}</td>
+                      <td class="vertical-center">{{ task.name }}</td>
+                      <td class="vertical-center">{{ task.priority }}</td>
+                      <td class="vertical-center">{{ task.state }}</td>
+                      <td class="vertical-center">{{ task.startDate?.toLocaleString() ?? "-" }}</td>
                       <td>
                         <button class="btn btn-warning text-white">
                           Manage
@@ -52,7 +53,6 @@
                         </button>
                       </td>
                     </tr>
-                   
                   </tbody>
                 </table>
               </ng-template>
@@ -72,3 +72,9 @@
 <ng-template #edit let-modal>
   <app-edit-functionality-modal [functionality]="selectedFunctionality"></app-edit-functionality-modal>
 </ng-template>
+
+<ng-template #task let-modal>
+  <app-add-task-modal [functionality]="selectedFunctionality"></app-add-task-modal>
+</ng-template>
+
+

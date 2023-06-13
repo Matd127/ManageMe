@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ActionTypes as FunctionalityActionTypes, FunctionalityAdd, FunctionalityEdit, FunctionalityDelete, FunctionalityRead } from './functionality.action';
+import { ActionTypes as FunctionalityActionTypes, FunctionalityAdd, FunctionalityEdit, FunctionalityDelete, FunctionalityRead, FunctionalityChangeState } from './functionality.action';
 import Functionality from 'src/models/Functionality';
 
 const dataFromLocalStorage = localStorage.getItem('functionalities')
@@ -37,6 +37,21 @@ export function functionalityReducer(state = functionalities, action: Action) {
       }
 
       return state;
+
+      case FunctionalityActionTypes.FunctionalityChangeState:
+        const changeStateAction = action as FunctionalityChangeState;
+        const updatedFunctionalities = state.map((functionality) => {
+          if (functionality.id === changeStateAction.payload.id) {
+            return {
+              ...functionality,
+              state: changeStateAction.payload.newState
+            };
+          }
+          return functionality;
+        });
+        localStorage.setItem('functionalities', JSON.stringify(updatedFunctionalities));
+        return updatedFunctionalities;
+
 
     case FunctionalityActionTypes.FunctionalityDelete:
       const deleteAction = action as FunctionalityDelete;

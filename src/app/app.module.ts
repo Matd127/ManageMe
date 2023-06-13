@@ -31,6 +31,7 @@ import { AddTaskModalComponent } from './projects/project/add-task-modal/add-tas
 import { AddFunctionalityModalComponent } from './projects/project/add-functionality-modal/add-functionality-modal.component';
 import { EditProjectModalComponent } from './projects/edit-project-modal/edit-project-modal.component';
 import { EditFunctionalityModalComponent } from './projects/project/edit-functionality-modal/edit-functionality-modal.component';
+import { EditTaskModalComponent } from './projects/project/edit-task-modal/edit-task-modal.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { EditFunctionalityModalComponent } from './projects/project/edit-functio
     AddFunctionalityModalComponent,
     EditProjectModalComponent,
     EditFunctionalityModalComponent,
+    EditTaskModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit functionality</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="name">Name of functionality</label>
+        <div class="input-group">
+          <input
+          id="name"
+          class="form-control"
+          placeholder="name"
+          name="name"
+          [(ngModel)]="name"
+          />
+        </div>
+
+        <label for="description" class="mt-3">Functionality description</label>
+         <div class="input-group">
+          <textarea
+            id="description"
+            class="form-control"
+            placeholder="description"
+            name="description"
+            [(ngModel)]="description"
+          ></textarea>
+         </div>
+
+         <!-- Radio for priority -->
+         <label for="priority" class="mt-3">Functionality priority</label>
+         <div class="form-check">
+           <input
+             type="radio"
+             class="form-check-input"
+             id="priorityLow"
+             name="priority"
+             value="Low"
+             [(ngModel)]="priority"
+           />
+           <label class="form-check-label" for="priorityLow">Low</label>
+         </div>
+         <div class="form-check">
+           <input
+             type="radio"
+             class="form-check-input"
+             id="priorityNormal"
+             name="priority"
+             value="Normal"
+             [(ngModel)]="priority"
+           />
+           <label class="form-check-label" for="priorityNormal">Normal</label>
+         </div>
+         <div class="form-check">
+           <input
+             type="radio"
+             class="form-check-input"
+             id="priorityHigh"
+             name="priority"
+             value="High"
+             [(ngModel)]="priority"
+           />
+           <label class="form-check-label" for="priorityHigh">High</label>
+         </div>
+
+
+         <p class="mt-3 text-danger" *ngIf="error">{{errorMessage}}</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="editFunctionality()">Edit</button>
+  </div>

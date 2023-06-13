@@ -23,6 +23,7 @@ export class ProjectComponent {
   project: Observable<Project | undefined>;
   functionalities: Observable<any>;
   tasks: any[] = [];
+  selectedFunctionality = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -61,7 +62,7 @@ export class ProjectComponent {
       this.tasks = tasks;
     });
 
-    console.log(this.tasks);
+    // console.log(this.tasks);
   }
 
   addFunctionality() {}
@@ -87,6 +88,13 @@ export class ProjectComponent {
   }
 
   open(content: any) {
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  }
+
+  editOpen(content: any, functionality: Functionality) {
+    this.selectedFunctionality = functionality;
+    console.log( this.selectedFunctionality)
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 }

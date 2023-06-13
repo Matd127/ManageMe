@@ -16,7 +16,7 @@ export class TaskAdd implements Action {
 export class TaskEdit implements Action {
     readonly type = ActionTypes.TaskEdit
 
-    constructor(public payload: {id: number, name?: string, description?: string}) {}
+    constructor(public payload: {id: number, name: string, description: string}) {}
 }
 
 export class TaskDelete implements Action {

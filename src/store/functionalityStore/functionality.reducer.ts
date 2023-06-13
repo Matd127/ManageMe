@@ -27,7 +27,8 @@ export function functionalityReducer(state = functionalities, action: Action) {
         const updatedFunctionality = {
           ...foundFunctionality,
           name: editAction.payload.name,
-          description: editAction.payload.description
+          description: editAction.payload.description,
+          priority: editAction.payload.priority
         };
         const newState = [...state];
         newState[foundFunctionalityIndex] = updatedFunctionality;

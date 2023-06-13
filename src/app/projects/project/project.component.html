@@ -20,7 +20,7 @@
             <div ngbAccordionBody>
               <ng-template>
                 <div class="mb-1">
-                  <button class="btn btn-warning text-white">
+                  <button class="btn btn-warning text-white" (click)="editOpen(edit, functionality)">
                     Edit functionality
                   </button>
                   <button class="btn btn-danger text-white mx-1" (click)="deleteFunctionaLity(functionality.id)">
@@ -39,10 +39,10 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let task of getTaskById(functionality.id)">
-                      <td>{{ task?.name }}</td>
-                      <td>{{ task?.priority }}</td>
-                      <td>{{ task?.state }}</td>
-                      <td>{{ task?.startDate?.toLocaleString() ?? "-" }}</td>
+                      <td>{{ task.name }}</td>
+                      <td>{{ task.priority }}</td>
+                      <td>{{ task.state }}</td>
+                      <td>{{ task.startDate.toLocaleString() ?? "-" }}</td>
                       <td>
                         <button class="btn btn-warning text-white">
                           Manage
@@ -67,4 +67,8 @@
 
 <ng-template #content let-modal>
   <app-add-functionality-modal></app-add-functionality-modal>
+</ng-template>
+
+<ng-template #edit let-modal>
+  <app-edit-functionality-modal [functionality]="selectedFunctionality"></app-edit-functionality-modal>
 </ng-template>

@@ -16,7 +16,7 @@ export class FunctionalityAdd implements Action {
 export class FunctionalityEdit implements Action {
     readonly type = ActionTypes.FunctionalityEdit
 
-    constructor(public payload: {id: number, name: string, description: string}) {}
+    constructor(public payload: {id: number, name: string, description: string, priority: 'Low' | 'Normal' | 'High'}) {}
 }
 
 export class FunctionalityDelete implements Action {

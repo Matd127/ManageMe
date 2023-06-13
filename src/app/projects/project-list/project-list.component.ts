@@ -36,10 +36,6 @@ export class ProjectListComponent {
     ) {
       this.isAdminOrDevops = !this.isAdminOrDevops;
     }
-
-    this.projects.subscribe((projects) => {
-      console.log('Projects:', projects);
-    });
   }
 
   open(content: any) {

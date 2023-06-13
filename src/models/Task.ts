@@ -7,7 +7,7 @@ export interface Task {
   description: string;
   priority: 'Low' | 'Normal' | 'High',
   functionality: Functionallity;
-  predictedTime: Date; // or no of hours?
+  predictedTime: number; // or date
   state: 'Todo' | 'Doing' | 'Done'
   createDate: Date;
   startDate?: Date;

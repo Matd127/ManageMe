@@ -1,1 +1,155 @@
-<p>edit-task-modal works!</p>
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Manage current task</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="closeModal()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="name">Name of task</label>
+        <div class="input-group">
+          <input
+            id="name"
+            class="form-control"
+            placeholder="name"
+            name="name"
+            [(ngModel)]="name"
+          />
+        </div>
+  
+        <label for="description" class="mt-2">Task description</label>
+        <div class="input-group">
+          <textarea
+            id="description"
+            class="form-control"
+            placeholder="description"
+            name="description"
+            [(ngModel)]="description"
+          ></textarea>
+        </div>
+
+
+        <label for="predictedTime" class="mt-2">Predicted time (hours)</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="predictedTime"
+            class="form-control"
+            placeholder="Predicted Time for task"
+            name="predictedTime"
+            [(ngModel)]="predictedTime"
+          />
+        </div>
+  
+        <label class="mt-2">Priority</label>
+        <div class="form-check">
+          <input
+            type="radio"
+            id="priorityLow"
+            class="form-check-input"
+            name="priority"
+            [(ngModel)]="priority"
+            value="Low"
+          />
+          <label for="priorityLow" class="form-check-label">Low</label>
+        </div>
+        
+        <div class="form-check">
+          <input
+            type="radio"
+            id="priorityNormal"
+            class="form-check-input"
+            name="priority"
+            [(ngModel)]="priority"
+            value="Normal"
+          />
+          <label for="priorityNormal" class="form-check-label">Normal</label>
+        </div>
+        
+        <div class="form-check">
+          <input
+            type="radio"
+            id="priorityHigh"
+            class="form-check-input"
+            name="priority"
+            [(ngModel)]="priority"
+            value="High"
+          />
+          <label for="priorityHigh" class="form-check-label">High</label>
+        </div>
+
+        <label class="mt-2">Task State</label>
+        <div class="form-check">
+          <input
+            type="radio"
+            id="stateTodo"
+            class="form-check-input"
+            name="state"
+            [(ngModel)]="state"
+            value="Todo"
+          />
+          <label for="stateTodo" class="form-check-label">Todo</label>
+        </div>
+      
+        <div class="form-check">
+          <input
+            type="radio"
+            id="stateDoing"
+            class="form-check-input"
+            name="state"
+            [(ngModel)]="state"
+            value="Doing"
+          />
+          <label for="stateDoing" class="form-check-label">Doing</label>
+        </div>
+      
+        <div class="form-check">
+          <input
+            type="radio"
+            id="stateDone"
+            class="form-check-input"
+            name="state"
+            [(ngModel)]="state"
+            value="Done"
+          />
+          <label for="stateDone" class="form-check-label">Done</label>
+        </div>
+
+        <label for="startDate" class="mt-2">Start Date</label>
+        <div class="input-group">
+          <input
+            type="date"
+            id="startDate"
+            class="form-control"
+            name="startDate"
+            [(ngModel)]="startDate"
+          />
+        </div>
+      
+        <label for="finishDate" class="mt-2">Finish Date</label>
+        <div class="input-group">
+          <input
+            type="date"
+            id="finishDate"
+            class="form-control"
+            name="finishDate"
+            [(ngModel)]="finishDate"
+          />
+        </div>
+        
+        <p class="mt-3 text-danger" *ngIf="error">{{errorMessages.errPrimaryInfo}}</p>
+        <p class="mt-3 text-danger" *ngIf="error">{{errorMessages.errDate}}</p>
+        <p class="mt-3 text-danger" *ngIf="error">{{errorMessages.errNoOfHours}}</p>
+        <p class="mt-3 text-danger" *ngIf="error">{{errorMessages.errDoing}}</p>
+        <p class="mt-3 text-danger" *ngIf="error">{{errorMessages.errDone}}</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="editTask()">Save</button>
+  </div>
+  

@@ -11,6 +11,7 @@ import {
 } from 'src/store/functionalityStore/functionality.action';
 import { TaskDelete, TaskRead } from 'src/store/taskStore/task.action';
 import Functionality from 'src/models/Functionality';
+import Task  from 'src/models/Task';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -23,7 +24,9 @@ export class ProjectComponent {
   project: Observable<Project | undefined>;
   functionalities: Observable<any>;
   tasks: any[] = [];
+
   selectedFunctionality = {};
+  selectedTask = {}
 
   constructor(
     private route: ActivatedRoute,
@@ -61,8 +64,6 @@ export class ProjectComponent {
     this.store.select('task').subscribe((tasks) => {
       this.tasks = tasks;
     });
-
-    // console.log(this.tasks);
   }
 
   addFunctionality() {}
@@ -96,9 +97,14 @@ export class ProjectComponent {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
+  editTask(content : any, functionality: Functionality, task: Task) {
+    this.selectedFunctionality = functionality;
+    this.selectedTask = task;
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  }
+
   editOpen(content: any, functionality: Functionality) {
     this.selectedFunctionality = functionality;
-    console.log(this.selectedFunctionality);
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 }

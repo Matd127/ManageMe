@@ -45,7 +45,7 @@
                       <td class="vertical-center">{{ task.state }}</td>
                       <td class="vertical-center">{{ task.startDate?.toLocaleString() ?? "-" }}</td>
                       <td>
-                        <button class="btn btn-warning text-white">
+                        <button class="btn btn-warning text-white" (click)="editTask(taskedit, functionality, task)">
                           Manage
                         </button>
                         <button class="mx-1 btn btn-danger text-white" (click)="deleteTask(task.id)">
@@ -64,7 +64,6 @@
   </div>
 </div>
 
-
 <ng-template #content let-modal>
   <app-add-functionality-modal></app-add-functionality-modal>
 </ng-template>
@@ -75,6 +74,10 @@
 
 <ng-template #task let-modal>
   <app-add-task-modal [functionality]="selectedFunctionality"></app-add-task-modal>
+</ng-template>
+
+<ng-template #taskedit let-modal>
+  <app-edit-task-modal [task]="selectedTask" [functionality]="selectedFunctionality"></app-edit-task-modal>
 </ng-template>
 
 

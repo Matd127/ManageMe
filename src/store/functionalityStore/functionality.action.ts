@@ -20,6 +20,7 @@ export class FunctionalityEdit implements Action {
     constructor(public payload: {id: number, name: string, description: string, priority: 'Low' | 'Normal' | 'High'}) {}
 }
 
+
 export class FunctionalityDelete implements Action {
     readonly type = ActionTypes.FunctionalityDelete
 

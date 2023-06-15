@@ -13,6 +13,8 @@ import { DisplayAccounts, Login } from 'src/store/userStore/user.action';
 export class LoginComponent implements OnInit {
   username = '';
   password = '';
+  error = false;
+  errorMessage = ''
 
   @Input() auth: boolean;
   @Output() authEvent = new EventEmitter<boolean>();
@@ -27,11 +29,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new DisplayAccounts());
     this.users = this.store.select('user');
-
-    //Testing store
-    this.users.subscribe((projectList) => {
-      console.log(projectList);
-    });
   }
 
   login() {
@@ -40,6 +37,9 @@ export class LoginComponent implements OnInit {
     this.store.select('user').subscribe((users: any[]) => {
       if (users && users.length === 1) {
         this.router.navigate(['/projects']);
+      } else {
+        this.error = true;
+        this.errorMessage = 'Login or password is incorrect'
       }
     });
   }

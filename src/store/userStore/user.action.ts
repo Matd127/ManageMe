@@ -1,12 +1,9 @@
 import { Action } from '@ngrx/store';
 
-
 export enum ActionTypes {
-  Login = 'Login',
-  Register = 'Register',
-  DisplayAccounts = 'DisplayAccounts',
-  EditAccount = 'EditAccount',
-  DeleteAccount = 'DeleteAccount',
+  Login = '[User] Login',
+  Register = '[User] Register',
+  DisplayAccounts = '[User] Display Accounts'
 }
 
 export class Login implements Action {
@@ -33,16 +30,4 @@ export class Register implements Action {
 
 export class DisplayAccounts {
   readonly type = ActionTypes.DisplayAccounts;
-}
-
-export class EditAccount {
-  readonly type = ActionTypes.EditAccount;
-
-  constructor(public payload: { id: number }) {}
-}
-
-export class DeleteAccount {
-  readonly type = ActionTypes.DeleteAccount;
-
-  constructor(public payload: { id: number }) {}
 }

@@ -14,24 +14,33 @@
       <div ngbAccordion *ngFor="let functionality of functionalities | async">
         <div ngbAccordionItem>
           <h2 ngbAccordionHeader>
-            <button ngbAccordionButton>{{ functionality.name }}  State:{{functionality.state}} Priority:{{functionality.priority}}</button>
+            <button ngbAccordionButton>{{ functionality.name }} · {{functionality.state}} · {{functionality.priority}}</button>
           </h2>
           <div ngbAccordionCollapse>
             <div ngbAccordionBody>
               <ng-template>
+                <p>{{functionality.description}}</p>
+
                 <div class="mb-1">
-                  <button class="btn btn-primary" (click)="openTask(task, functionality)">Add task</button>
-                  <button class="btn btn-warning text-white" (click)="editOpen(edit, functionality)">
-                    Edit functionality
-                  </button>
-                  <button class="btn btn-danger text-white mx-1" (click)="deleteFunctionaLity(functionality.id)">
-                    Delete functionality
-                  </button>
+                  <div class="row">
+                    <div class="col-12 col-md-4 mb-2">
+                      <button class="btn btn-primary w-100" (click)="openTask(task, functionality)">Add task</button>
+                    </div>
+                    <div class="col-12 col-md-4 mb-2">
+                      <button class="btn btn-warning text-white w-100" *ngIf="isAdminOrDevops" (click)="editOpen(edit, functionality)">Edit functionality</button>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <button class="btn btn-danger text-white w-100" *ngIf="isAdminOrDevops" (click)="deleteFunctionaLity(functionality.id)">Delete functionality</button>
+                    </div>
+                  </div>
                 </div>
+
                 <table class="table table-striped">
                   <thead>
                     <tr>
                       <th scope="col">Task name</th>
+                      <th scope="col">Task description</th>
+                      
                       <th scope="col">Priority</th>
                       <th scope="col">State</th>
                       <th scope="col">Started:</th>
@@ -41,6 +50,7 @@
                   <tbody>
                     <tr *ngFor="let task of getTaskById(functionality.id)">
                       <td class="vertical-center">{{ task.name }}</td>
+                      <td class="vertical-center">{{ task.description }}</td>
                       <td class="vertical-center">{{ task.priority }}</td>
                       <td class="vertical-center">{{ task.state }}</td>
                       <td class="vertical-center">{{ task.startDate?.toLocaleString() ?? "-" }}</td>

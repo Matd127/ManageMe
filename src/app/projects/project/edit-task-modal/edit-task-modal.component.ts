@@ -37,24 +37,13 @@ export class EditTaskModalComponent {
   };
 
   error = false;
-
   constructor(private store: Store<any>, private modalService: NgbModal) {}
 
   closeModal() {
     this.modalService.dismissAll();
   }
 
-  onSelect(event: any): void {
-    const value = event.target?.value;
-    if (value) {
-      this.priority = value;
-    }
-  }
-
   editTask() {
-    const checkDoing = this.state === 'Doing' && this.startDate !== undefined;
-    const checkDone = this.state === 'Done' && this.startDate !== undefined && this.finishDate !== undefined;
-    
     if (this.startDate && this.finishDate && this.startDate > this.finishDate) {
       this.error = true;
       this.errorMessages.errDate = 'You cannot finish task before start';
@@ -79,23 +68,6 @@ export class EditTaskModalComponent {
       this.errorMessages.errNoOfHours = '';
     }
 
-    // if(!checkDoing) {
-    //   console.log(this.state)
-    //   this.error = true;
-    //   this.errorMessages.errDoing = 'You cannot set task to doing without date'
-    //   return;
-    // } else {
-    //   this.errorMessages.errDoing = '';
-    // }
-
-    // if(!checkDone) {
-    //   this.error = true;
-    //   this.errorMessages.errDone = 'You cannot set task to finish without date'
-    //   return;
-    // } else {
-    //   this.errorMessages.errDone = '';
-    // }
-
     this.error = false;
 
     const updatedTask : Task = {
@@ -111,9 +83,6 @@ export class EditTaskModalComponent {
       finishDate: this.finishDate,
       responsibleUser: this.task.responsibleUser
     }
-
-    console.log(this.state)
-    // console.log(this.startDate, this.finishDate)
     
     this.store.dispatch(new TaskRead())
     this.store.select('task').subscribe((tasks: Task[]) => {
@@ -131,10 +100,9 @@ export class EditTaskModalComponent {
       finishDate: this.finishDate,
     }))
 
-    const states = this.taskArr.filter(task => task.functionality.id === updatedTask.functionality.id)
+    const states = this.taskArr.filter(task => task.functionality.id === updatedTask.functionality.id);
     
     if(states.every(task => task.state === 'Done')) {
-      console.log('All done')
       this.store.dispatch(new FunctionalityChangeState({id: updatedTask.functionality.id, newState: 'Done'}))
     } else {
       this.store.dispatch(new FunctionalityChangeState({id: updatedTask.functionality.id, newState: 'Doing'}))
@@ -142,12 +110,12 @@ export class EditTaskModalComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.task);
-
     this.name = this.task.name;
     this.description = this.task.description;
     this.predictedTime = this.task.predictedTime;
     this.priority = this.task.priority;
     this.state = this.task.state;
+    this.startDate = this.task.startDate ? new Date(this.task.startDate) : undefined;
+    this.finishDate = this.task.finishDate ? new Date(this.task.finishDate) : undefined;
   }
 }

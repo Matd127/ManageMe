@@ -23,6 +23,8 @@ export class ProjectComponent {
   public id: string | null;
   project: Observable<Project | undefined>;
   functionalities: Observable<any>;
+  loggedUser: any;
+  isAdminOrDevops = false;
   tasks: any[] = [];
 
   selectedFunctionality = {};
@@ -36,6 +38,16 @@ export class ProjectComponent {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+
+    const getUserFromLocalStorage = localStorage.getItem('user');
+    this.loggedUser =
+      getUserFromLocalStorage && JSON.parse(getUserFromLocalStorage);
+    if (
+      this.loggedUser[0].role === 'admin' ||
+      this.loggedUser[0].role === 'devops'
+    ) {
+      this.isAdminOrDevops = !this.isAdminOrDevops;
+    }
 
     this.store.dispatch(new Read());
     this.project = this.store
@@ -66,13 +78,9 @@ export class ProjectComponent {
     });
   }
 
-  addFunctionality() {}
-
   deleteFunctionaLity(id: number) {
     this.store.dispatch(new FunctionalityDelete({ id }));
   }
-
-  addTask() {}
 
   getTaskById(id: number) {
     if (this.tasks.length > 0) {

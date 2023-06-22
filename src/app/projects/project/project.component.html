@@ -11,7 +11,7 @@
 
         </div>
       </div>
-      <div ngbAccordion *ngFor="let functionality of functionalities | async">
+      <div class="mt-2" ngbAccordion *ngFor="let functionality of functionalities | async">
         <div ngbAccordionItem>
           <h2 ngbAccordionHeader>
             <button ngbAccordionButton>{{ functionality.name }} · {{functionality.state}} · {{functionality.priority}}</button>

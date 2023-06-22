@@ -37,6 +37,7 @@ export class EditFunctionalityModalComponent {
 
     this.store.dispatch(new FunctionalityEdit(editedFunctionality))
     console.log(editedFunctionality)
+    this.modalService.dismissAll();
   }
 
   closeModal() {

@@ -77,5 +77,6 @@ export class AddTaskModalComponent {
         })
       );
     }
+    this.modalService.dismissAll();
   }
 }

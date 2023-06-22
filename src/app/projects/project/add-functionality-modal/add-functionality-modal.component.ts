@@ -18,6 +18,8 @@ export class AddFunctionalityModalComponent {
   description = '';
   priority = '';
   state = 'Todo';
+  error = false;
+  errorMessage = ''
 
   constructor( private store: Store<any>, private modalService: NgbModal) {}
 
@@ -33,7 +35,11 @@ export class AddFunctionalityModalComponent {
 
     let user, project;
 
-    if(this.name === '' || this.description === '' ) return;
+    if(this.name === '' || this.description === '' ) {
+      this.error = true;
+      this.errorMessage = 'Name and description cannot be empty';
+      return;
+    } 
     if(!this.userFromLocalStorage || !this.projectFromLocalStorage) return;
 
     if(this.userFromLocalStorage) user = JSON.parse(this.userFromLocalStorage);
@@ -43,7 +49,7 @@ export class AddFunctionalityModalComponent {
       id: Date.now(),
       name: this.name,
       description: this.description,
-      priority: 'Low', //this.priority,
+      priority: this.priority as 'Low' | 'Normal' | 'High' ,
       project,
       owner: user,
       state: 'Todo'
@@ -51,5 +57,6 @@ export class AddFunctionalityModalComponent {
 
     this.store.dispatch(new FunctionalityAdd(newFunctionality))
     console.log(newFunctionality)
+    this.modalService.dismissAll();
   }
 } 

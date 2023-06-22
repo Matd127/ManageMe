@@ -13,6 +13,7 @@ import { TaskDelete, TaskRead } from 'src/store/taskStore/task.action';
 import Functionality from 'src/models/Functionality';
 import Task  from 'src/models/Task';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AdminDevopsGuard } from 'src/guards/AdminDevopsGuard';
 
 @Component({
   selector: 'app-project',
@@ -33,7 +34,8 @@ export class ProjectComponent {
   constructor(
     private route: ActivatedRoute,
     private store: Store<any>,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    public adminDevopsGuard: AdminDevopsGuard
   ) {}
 
   ngOnInit(): void {

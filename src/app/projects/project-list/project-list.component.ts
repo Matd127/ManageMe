@@ -5,6 +5,7 @@ import { Read, Delete } from 'src/store/projectStore/project.action';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Project from 'src/models/Project';
 import { Router } from '@angular/router';
+import { AdminDevopsGuard } from 'src/guards/AdminDevopsGuard';
 
 @Component({
   selector: 'app-project-list',
@@ -13,7 +14,6 @@ import { Router } from '@angular/router';
 })
 export class ProjectListComponent {
   projects: Observable<any[]>;
-  isAdminOrDevops = false;
   loggedUser: any;
   selectedProject = {}
 
@@ -21,21 +21,12 @@ export class ProjectListComponent {
     private store: Store<any>,
     private modalService: NgbModal,
     private router: Router,
+    public adminDevopsGuard: AdminDevopsGuard
   ) {}
 
   ngOnInit(): void {
     this.store.dispatch(new Read());
     this.projects = this.store.select('project');
-
-    const getUserFromLocalStorage = localStorage.getItem('user');
-    this.loggedUser =
-      getUserFromLocalStorage && JSON.parse(getUserFromLocalStorage);
-    if (
-      this.loggedUser[0].role === 'admin' ||
-      this.loggedUser[0].role === 'devops'
-    ) {
-      this.isAdminOrDevops = !this.isAdminOrDevops;
-    }
   }
 
   open(content: any) {

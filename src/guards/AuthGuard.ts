@@ -8,7 +8,7 @@ import User from 'src/models/User';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
 
   constructor(private store: Store<any>, private router: Router) {}
 
@@ -17,10 +17,10 @@ export class LoginGuard implements CanActivate {
       map((users: User[]) => {
         const storedUser = localStorage.getItem('user');
         if (storedUser && users && users.length === 1) {
-          return true;
+          this.router.navigate(['/projects']);
+          return false;
         } else {
-          this.router.navigate(['/auth']);
-          return false; 
+          return true;
         }
       })
     );

@@ -13,11 +13,6 @@ export class ProjectsComponent {
 
   ngOnInit(): void {
     this.width = window.innerWidth;
-    // const checkIfLogged = localStorage.getItem('user');
-
-    // if (!checkIfLogged) {
-    //   this.router.navigate(['auth']);
-    // }
   }
 
   @HostListener('window:resize', ['$event'])

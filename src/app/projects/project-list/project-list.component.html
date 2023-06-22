@@ -3,7 +3,7 @@
       <div class="card-body">
         <div class="d-flex align-items-center justify-content-between flex-wrap mb-4">
           <h5 class="d-flex align-items-center card-title fs-5 fw-semibold">Your projects</h5>
-          <button class="btn btn-primary fs-6 d-flex " *ngIf="isAdminOrDevops" (click)="open(content)">Add a new project</button>
+          <button class="btn btn-primary fs-6 d-flex " *ngIf="adminDevopsGuard.canActivate()" (click)="open(content)">Add a new project</button>
         </div>
         <div class="row">
           <div class="col-md-6 col-xl-4" *ngFor="let project of (projects | async)">
@@ -21,15 +21,15 @@
                     <span class="mx-2">Work</span>
                   </button>
                   
-                  <button class="btn btn-info text-white fs-6 mt-2 d-flex align-items-center" *ngIf="isAdminOrDevops">
+                  <button class="btn btn-info text-white fs-6 mt-2 d-flex align-items-center" *ngIf="adminDevopsGuard.canActivate()">
                     <mat-icon>work</mat-icon>
                     <span class="mx-2">Details</span>
                   </button>
-                  <button class="btn btn-warning text-white fs-6 mt-2 d-flex align-items-center" *ngIf="isAdminOrDevops" (click)="editOpen(edit, project)">
+                  <button class="btn btn-warning text-white fs-6 mt-2 d-flex align-items-center" *ngIf="adminDevopsGuard.canActivate()" (click)="editOpen(edit, project)">
                     <mat-icon>work</mat-icon>
                     <span class="mx-2">Edit</span>
                   </button>
-                  <button class="btn btn-danger text-white fs-6 mt-2 d-flex align-items-center"  *ngIf="isAdminOrDevops" (click)="deleteProject(project.id)">
+                  <button class="btn btn-danger text-white fs-6 mt-2 d-flex align-items-center"  *ngIf="adminDevopsGuard.canActivate()" (click)="deleteProject(project.id)">
                     <mat-icon>work</mat-icon>
                     <span class="mx-2">Delete</span>
                   </button>

@@ -32,7 +32,9 @@ import { AddFunctionalityModalComponent } from './projects/project/add-functiona
 import { EditProjectModalComponent } from './projects/edit-project-modal/edit-project-modal.component';
 import { EditFunctionalityModalComponent } from './projects/project/edit-functionality-modal/edit-functionality-modal.component';
 import { EditTaskModalComponent } from './projects/project/edit-task-modal/edit-task-modal.component';
-import { LoginGuard } from 'src/guards/LoginGuard';
+import { AuthGuard } from 'src/guards/AuthGuard';
+import { ProjectGuard } from 'src/guards/ProjectGuard';
+import { AdminDevopsGuard } from 'src/guards/AdminDevopsGuard';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { LoginGuard } from 'src/guards/LoginGuard';
     FormsModule
   ],
   providers: [
-    LoginGuard
+    AuthGuard,
+    ProjectGuard,
+    AdminDevopsGuard
   ],
   bootstrap: [AppComponent],
 })

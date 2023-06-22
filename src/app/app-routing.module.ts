@@ -6,21 +6,22 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './projects/dashboard/dashboard.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { ProjectComponent } from './projects/project/project.component';
-import { LoginGuard } from 'src/guards/LoginGuard';
+import { AuthGuard } from 'src/guards/AuthGuard';
+import { ProjectGuard } from 'src/guards/ProjectGuard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'projects',
     component: ProjectsComponent,
-    canActivate: [LoginGuard],
+    canActivate: [ProjectGuard],
     children: [
       { path: '', component: ProjectListComponent },
       { path: 'project/:id', component: ProjectComponent },
       { path: 'dashboard', component: DashboardComponent },
     ],
   },
-  { path: 'auth', component: AuthComponent },
+  { path: 'auth', component: AuthComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
